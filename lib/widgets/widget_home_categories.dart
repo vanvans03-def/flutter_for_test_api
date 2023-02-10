@@ -40,9 +40,12 @@ class HomeCategoriesWidget extends ConsumerWidget {
       data: (list) {
         return _buildCategoryList(list!);
       },
-      error: (_, __) => const Center(
-        child: Text("ERR"),
-      ),
+      error: (error, stackTrace) {
+        print('Error: $error\nStackTrace: $stackTrace');
+        return Center(
+          child: Text("ERR"),
+        );
+      },
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
