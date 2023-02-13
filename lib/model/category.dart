@@ -5,9 +5,12 @@ import '../config.dart';
 part 'category.freezed.dart';
 part 'category.g.dart';
 
-List<Category> categoriesFromJson(dynamic str) => List<Category>.from(
-      (str).map((e) => Category.fromJson(e)),
-    );
+List<Category> categoriesFromJson(dynamic str) {
+  if (str == null) {
+    return [];
+  }
+  return List<Category>.from((str).map((e) => Category.fromJson(e)));
+}
 
 @freezed
 abstract class Category with _$Category {
